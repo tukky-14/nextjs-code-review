@@ -1,14 +1,14 @@
 import { FC } from 'react';
 
-interface SidebarProps {
+interface sidebarProps {
     files: File[];
     onDelete: (fileName: string) => void;
 }
 
-const Sidebar: FC<SidebarProps> = ({ files, onDelete }) => {
+const Sidebar: FC<sidebarProps> = ({ files, onDelete }) => {
     return (
-        <aside className="w-1/4 bg-gray-200 p-4">
-            <h2 className="mb-4 text-lg font-bold">Uploaded Files</h2>
+        <aside className="w-1/4 bg-gray-800 p-4 text-white">
+            <h2 className="mb-4 text-lg font-bold text-white">Uploaded Files</h2>
             <ul>
                 {files.map((file) => (
                     <li key={file.name} className="mb-2 flex items-center justify-between">
