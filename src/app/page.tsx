@@ -22,7 +22,7 @@ const Home = () => {
             <Header />
             <div className="flex flex-1">
                 <Sidebar files={files} onDelete={handleDelete} />
-                <Main onDrop={handleDrop} />
+                <Main files={files} onDrop={handleDrop} />
             </div>
             <Footer />
         </div>

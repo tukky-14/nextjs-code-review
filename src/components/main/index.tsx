@@ -2,10 +2,11 @@ import { useDropzone } from 'react-dropzone';
 import { FC, useState } from 'react';
 
 interface mainProps {
+    files: File[];
     onDrop: (acceptedFiles: File[]) => void;
 }
 
-const Main: FC<mainProps> = ({ onDrop }) => {
+const Main: FC<mainProps> = ({ files, onDrop }) => {
     const { getRootProps, getInputProps, open } = useDropzone({
         onDrop,
         noClick: true,
@@ -14,14 +15,22 @@ const Main: FC<mainProps> = ({ onDrop }) => {
     const [reviewResult, setReviewResult] = useState<string | null>(null);
 
     const fetchReview = async () => {
-        // Call Gemini API (Reference: https://zenn.dev/bbsfish/articles/26039788de5815)
         try {
+            // ファイル内容を連結してプロンプトを作成
+            const fileContents = await Promise.all(
+                files.map(async (file) => {
+                    const text = await file.text();
+                    return text;
+                })
+            );
+            const prompt = fileContents.join('');
+            // ファイル情報を連結してプロンプトを作成
             const response = await fetch('/api/gemini-review', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ files: [] }),
+                body: JSON.stringify({ prompt }),
             });
             if (!response.ok) {
                 throw new Error('Failed to fetch the review');
