@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# コードレビューアプリ
 
-## Getting Started
-
-First, run the development server:
+### アプリの設定
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# アプリの作成
+npx create-next-app@14 nextjs-code-review
+
+# パッケージのインストール
+npm i react-dropzone
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### プロンプト
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<details>
+<summary>クリックして展開</summary>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+あなたはプロのフロントエンドエンジニアです。
+Next.jsとTypeScriptとTailwindCSSを使用して、コードレビューアプリを作成したいです。
+以下は、コードレビューアプリの仕様です。
+ステップバイステップで実装してください。
 
-## Learn More
+# 仕様
+- ユーザーは、ファイルをアップロードできる
+- ユーザーは、アップロードしたファイルを削除できる
+- ユーザーはw、アップロードしたファイルをサイドバーで確認できる
 
-To learn more about Next.js, take a look at the following resources:
+# 要件
+- Next.jsとTailwindCSSを使用する
+- ファイルのアップロードは、[react-dropzone](https://react-dropzone.js.org/)を使用する
+- アップロードされたファイルの情報は、サイドバーに表示する
+- サイドバーには、アップロードされたファイルの名前と削除ボタンを表示する
+- サイドバーの削除ボタンをクリックすると、アップロードされたファイルが削除される
+- メインにはGeminiのAPIで帰ってきたマークダウンのコードレビュー結果を表示する
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# レイアウト
+- レイアウトは、[TailwindCSS](https://tailwindcss.com/)を使用して作成する
+- ヘッダー、サイドバー、メイン、フッターの4つのコンポーネントに分割する
+- レスポンシブ対応する
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</details>
