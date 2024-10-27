@@ -16,6 +16,11 @@ const Main: FC<mainProps> = ({ files, onDrop }) => {
     const [loading, setLoading] = useState<boolean>(false);
 
     const fetchReview = async () => {
+        if (files.length === 0) {
+            setReviewResult('ファイルが選択されていません');
+            return;
+        }
+
         setLoading(true);
         try {
             // ファイル内容を連結してプロンプトを作成
