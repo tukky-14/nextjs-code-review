@@ -48,6 +48,10 @@ const Main: FC<mainProps> = ({ files, onDrop }) => {
         }
     };
 
+    const clearReview = () => {
+        setReviewResult(null);
+    };
+
     return (
         <main className="max-h-screen flex-1 overflow-scroll p-4">
             <div {...getRootProps({ className: 'border-2 border-dashed border-gray-400 p-8 text-center' })}>
@@ -61,9 +65,17 @@ const Main: FC<mainProps> = ({ files, onDrop }) => {
                     Select Files
                 </button>
             </div>
-            <button onClick={fetchReview} className="mt-4 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700">
-                Get Review
-            </button>
+            <div className="flex gap-3">
+                <button
+                    onClick={fetchReview}
+                    className="mt-4 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700"
+                >
+                    Get Review
+                </button>
+                <button onClick={clearReview} className="mt-4 rounded bg-red-500 px-4 py-2 text-white hover:bg-red-700">
+                    Clear
+                </button>
+            </div>
             {reviewResult && (
                 <div className="mt-4 rounded border bg-gray-800 p-4 text-white">
                     <h2 className="mb-2 text-lg font-bold text-white">Code Review Result</h2>
