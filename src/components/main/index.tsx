@@ -25,13 +25,14 @@ const Main: FC<mainProps> = ({ files, onDrop }) => {
             );
             const prompt = fileContents.join('');
             // ファイル情報を連結してプロンプトを作成
-            const response = await fetch('/api/gemini-review', {
+            const response = await fetch('/api/gemini', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ prompt }),
             });
+
             if (!response.ok) {
                 throw new Error('Failed to fetch the review');
             }
