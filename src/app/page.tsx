@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Header from '../components/header';
 import Sidebar from '../components/sidebar';
 import Main from '../components/main';
-import Footer from '../components/footer';
 
 const Home = () => {
     const [files, setFiles] = useState<File[]>([]);
@@ -24,7 +23,6 @@ const Home = () => {
                 <Sidebar files={files} onDelete={handleDelete} />
                 <Main files={files} onDrop={handleDrop} />
             </div>
-            <Footer />
         </div>
     );
 };
