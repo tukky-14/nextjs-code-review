@@ -56,13 +56,13 @@ const Main: FC<mainProps> = ({ files, onDrop }) => {
         <main className="max-h-screen flex-1 overflow-scroll p-4">
             <div {...getRootProps({ className: 'border-2 border-dashed border-gray-400 p-8 text-center' })}>
                 <input {...getInputProps()} />
-                <p>Drag and drop some files here, or click to select files</p>
+                <p>ファイルをドラッグ&ドロップするか、選択してください。</p>
                 <button
                     type="button"
                     onClick={open}
                     className="mt-2 rounded bg-gray-300 px-4 py-2 text-black hover:bg-gray-400"
                 >
-                    Select Files
+                    ファイルの選択
                 </button>
             </div>
             <div className="flex gap-3">
@@ -70,15 +70,15 @@ const Main: FC<mainProps> = ({ files, onDrop }) => {
                     onClick={fetchReview}
                     className="mt-4 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700"
                 >
-                    Get Review
+                    レビュー
                 </button>
                 <button onClick={clearReview} className="mt-4 rounded bg-red-500 px-4 py-2 text-white hover:bg-red-700">
-                    Clear
+                    クリア
                 </button>
             </div>
             {reviewResult && (
                 <div className="mt-4 rounded border bg-gray-800 p-4 text-white">
-                    <h2 className="mb-2 text-lg font-bold text-white">Code Review Result</h2>
+                    <h2 className="mb-2 text-lg font-bold text-white">【コードレビュー結果】</h2>
                     <pre className="whitespace-pre-wrap">{reviewResult}</pre>
                 </div>
             )}
