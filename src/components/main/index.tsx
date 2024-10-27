@@ -13,8 +13,10 @@ const Main: FC<mainProps> = ({ files, onDrop }) => {
         noKeyboard: true,
     });
     const [reviewResult, setReviewResult] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const fetchReview = async () => {
+        setLoading(true);
         try {
             // ファイル内容を連結してプロンプトを作成
             const fileContents = await Promise.all(
@@ -41,11 +43,13 @@ const Main: FC<mainProps> = ({ files, onDrop }) => {
         } catch (error) {
             console.error('Error:', error);
             setReviewResult('An error occurred while fetching the review');
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <main className="flex-1 p-4">
+        <main className="max-h-screen flex-1 overflow-scroll p-4">
             <div {...getRootProps({ className: 'border-2 border-dashed border-gray-400 p-8 text-center' })}>
                 <input {...getInputProps()} />
                 <p>Drag and drop some files here, or click to select files</p>
@@ -63,7 +67,12 @@ const Main: FC<mainProps> = ({ files, onDrop }) => {
             {reviewResult && (
                 <div className="mt-4 rounded border bg-gray-800 p-4 text-white">
                     <h2 className="mb-2 text-lg font-bold text-white">Code Review Result</h2>
-                    <pre>{reviewResult}</pre>
+                    <pre className="whitespace-pre-wrap">{reviewResult}</pre>
+                </div>
+            )}
+            {loading && (
+                <div className="absolute inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="text-xl font-bold text-white">Loading...</div>
                 </div>
             )}
         </main>
